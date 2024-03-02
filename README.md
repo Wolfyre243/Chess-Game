@@ -8,4 +8,4 @@
                                                                     
                                                                     
 Mini project in Java to learn algorithms and more
-IT DOES NOT WORK HELP
+THE BIG TEXT DOES NOT WORK HELP
