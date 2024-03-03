@@ -1,11 +1,10 @@
+### Project Chess Game
+A small project made by me, to learn more about java and escape tutorial hell
 
-   _____ _    _ ______  _____ _____    _____          __  __ ______ 
-  / ____| |  | |  ____|/ ____/ ____|  / ____|   /\   |  \/  |  ____|
- | |    | |__| | |__  | (___| (___   | |  __   /  \  | \  / | |__   
- | |    |  __  |  __|  \___ \\___ \  | | |_ | / /\ \ | |\/| |  __|  
- | |____| |  | | |____ ____) |___) | | |__| |/ ____ \| |  | | |____ 
-  \_____|_|  |_|______|_____/_____/   \_____/_/    \_\_|  |_|______|
-                                                                    
-                                                                    
-Mini project in Java to learn algorithms and more
-THE BIG TEXT DOES NOT WORK HELP
+(there was meant to be big text but i dont get ascii art just yet...)
+
+### References
+This project is based on a lot of stuff online because I wasn't sure about what I was doing exactly, so here they are:
+
+> [https://massivetechinterview.blogspot.com/2015/07/design-chess-game-using-oo-principles.html](url)
+> [https://www.geeksforgeeks.org/design-a-chess-game/](url)
