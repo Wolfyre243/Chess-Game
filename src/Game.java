@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.io.PrintWriter;
 
-public class Chess {
+public class Game {
     static Scanner in = new Scanner(System.in);
     static PrintWriter printWriter = new PrintWriter(System.out, true);
 
@@ -17,6 +17,10 @@ public class Chess {
             {'♖','♘','♗','♕','♔','♗','♘','♖'}
 
     };
+
+    public Game() { //TODO: add player parameters
+
+    }
 
     public static String getInput(String message) {
         System.out.println(message);
@@ -33,12 +37,29 @@ public class Chess {
         }
     }
 
-    public static void main(String args[]) {
-        System.out.println("Chess ♔");
-        if (getInput("Start new game? Yes/No").equals("Yes")) {
-            print2D(gameBoard);
-        } else {
-            System.out.println("ok.");
+    public static void parseMove(String moveInput) {
+        for (char letter : moveInput.toCharArray()) {
+            if (Character.isUpperCase(letter)) {
+                
+            }
         }
+    }
+
+    public static void main(String args[]) {
+        while (true) {
+            System.out.println("Chess ♔");
+            if (!getInput("Start new game? Yes/No").equals("Yes")) {
+                System.out.println("ok.");
+                break;
+            }
+            print2D(gameBoard);
+            System.out.println("Please enter your move in the format: e4; Qxc6; etc.");
+            //White goes first
+            String whiteMove = getInput("Your move, white!");
+
+
+
+        }
+
     }
 }
