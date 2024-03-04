@@ -8,6 +8,12 @@ public class Board {
         spots = new Spot[8][8];
         gameBoard = new char[8][8];
 
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                spots[j][i] = new Spot(i, j);
+            }
+        }
+
     }
 
     public void setPieces(Player p) {
