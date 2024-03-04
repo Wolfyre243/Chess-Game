@@ -2,9 +2,11 @@ import java.util.Arrays;
 
 public class Board {
     private Spot[][] spots;
+    private char[][] gameBoard;
 
     public Board() {
         spots = new Spot[8][8];
+        gameBoard = new char[8][8];
 
     }
 
@@ -20,6 +22,21 @@ public class Board {
         }
     }
 
+    public void updateGameBoard() {
+        //iterate through spots[][] 2D matrix to change the respective pieces
+        for (Spot[] row : this.spots) {
+            for (Spot currentSpot : row ) {
+                if (currentSpot.getPiece() != null) {
+                    gameBoard[currentSpot.x][currentSpot.y] = currentSpot.getPiece().icon;
+                } else {
+                    gameBoard[currentSpot.x][currentSpot.y] = '☐';
+                }
+            }
+        }
+    }
 
+    public char[][] getGameBoard() {
+        return gameBoard;
+    }
 
 }
