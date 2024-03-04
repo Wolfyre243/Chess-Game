@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class Player {
     public boolean isWhite;
+    public String name;
     private ArrayList<Pieces> playerPieces = new ArrayList<Pieces>();
 
-    public Player(boolean isWhite) {
+    public Player(boolean isWhite, String inputName) {
         this.isWhite = isWhite;
+        this.name = inputName;
         createPieces();
     }
 
