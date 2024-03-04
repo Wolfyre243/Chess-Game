@@ -7,8 +7,8 @@ public class Player {
     private ArrayList<Pieces> playerPieces = new ArrayList<Pieces>();
 
     public Player(boolean isWhite) {
-
         this.isWhite = isWhite;
+        createPieces();
     }
 
     public ArrayList<Pieces> getPlayerPieces() {
@@ -16,9 +16,6 @@ public class Player {
     }
 
     public void createPieces() {
-        //TODO: generate a list of pieces and set them to their respective starting positions;
-        //^^take note that the x and y values should be initialised only and not assigned to spot yet;
-        //that will be done in setPieces in Board.
 
         if (this.isWhite) {
             //create white pawns
@@ -49,8 +46,9 @@ public class Player {
             this.playerPieces.add(new Rook(false, 7, 0));
             this.playerPieces.add(new Queen(false, 3, 0));
             this.playerPieces.add(new King(false, 4, 0));
-
         }
+
+        System.out.println(playerPieces.toString());
     }
 
 

@@ -37,13 +37,15 @@ public class Game {
         }
     }
 
+/*
     public static void parseMove(String moveInput) {
         for (char letter : moveInput.toCharArray()) {
             if (Character.isUpperCase(letter)) {
-                
+
             }
         }
     }
+*/
 
     public static void main(String args[]) {
         while (true) {
@@ -52,10 +54,13 @@ public class Game {
                 System.out.println("ok.");
                 break;
             }
+
+/*
             print2D(gameBoard);
             System.out.println("Please enter your move in the format: e4; Qxc6; etc.");
             //White goes first
             String whiteMove = getInput("Your move, white!");
+*/          Player p1 = new Player(true);
 
 
 
