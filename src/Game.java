@@ -6,8 +6,14 @@ public class Game {
     static Scanner in = new Scanner(System.in);
     static PrintWriter printWriter = new PrintWriter(System.out, true);
 
-    public Game() { //TODO: add player parameters
+    final Board chessBoard;
 
+    Player p1;
+    Player p2;
+
+
+    public Game() {
+        chessBoard = new Board();
     }
 
     public static String getInput(String message) {
@@ -25,7 +31,34 @@ public class Game {
         }
     }
 
-    //TODO: add enter player method here
+    public boolean enterPlayer(Player player) {
+        if (p1 == null) {
+            this.p1 = player;
+        } else if (p2 == null) {
+            this.p2 = player;
+        } else {
+            return false;
+        }
+
+        chessBoard.setPieces(player);
+        return true;
+    }
+
+    public void startGame() {
+        System.out.println("Game start!");
+
+        enterPlayer(new Player(true, "Tom"));
+        enterPlayer(new Player(false, "Harry"));
+        chessBoard.updateGameBoard();
+
+        //add game logic here in the future
+        print2D(chessBoard.getGameBoard());
+
+        System.out.println("Your turn, " + this.p1.name + ".");
+
+
+
+    }
 
 
     public static void main(String args[]) {
@@ -36,17 +69,8 @@ public class Game {
                 break;
             }
 
-            //testing purposes:
-            Player p1 = new Player(true);
-            Player p2 = new Player(false);
-            Board chessBoard = new Board();
-
-            chessBoard.setPieces(p1);
-            chessBoard.setPieces(p2);
-
-            chessBoard.updateGameBoard();
-            System.out.println("Current board:");
-            print2D(chessBoard.getGameBoard());
+            Game currentGame = new Game();
+            currentGame.startGame();
 
 
         }

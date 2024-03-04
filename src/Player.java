@@ -11,6 +11,8 @@ public class Player {
         this.isWhite = isWhite;
         this.name = inputName;
         createPieces();
+
+        System.out.println("Welcome, " + this.name + "!");
     }
 
     public ArrayList<Pieces> getPlayerPieces() {
@@ -50,7 +52,7 @@ public class Player {
             this.playerPieces.add(new King(false, 4, 0));
         }
 
-        System.out.println("Created player's pieces: " + playerPieces.toString());
+        //System.out.println(this.name + "'s pieces: " + playerPieces.toString());
     }
 
 
