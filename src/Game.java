@@ -6,18 +6,6 @@ public class Game {
     static Scanner in = new Scanner(System.in);
     static PrintWriter printWriter = new PrintWriter(System.out, true);
 
-    static char[][] gameBoard = {
-            {'♜','♞','♝','♛','♚','♝','♞','♜'},
-            {'♟','♟','♟','♟','♟','♟','♟','♟',},
-            {' ',' ',' ',' ',' ',' ',' ',' ',' ',},
-            {' ',' ',' ',' ',' ',' ',' ',' ',' ',},
-            {' ',' ',' ',' ',' ',' ',' ',' ',' ',},
-            {' ',' ',' ',' ',' ',' ',' ',' ',' ',},
-            {'♙','♙','♙','♙','♙','♙','♙','♙',},
-            {'♖','♘','♗','♕','♔','♗','♘','♖'}
-
-    };
-
     public Game() { //TODO: add player parameters
 
     }
@@ -37,13 +25,8 @@ public class Game {
         }
     }
 
-    public static void parseMove(String moveInput) {
-        for (char letter : moveInput.toCharArray()) {
-            if (Character.isUpperCase(letter)) {
-                
-            }
-        }
-    }
+    //TODO: add enter player method here
+
 
     public static void main(String args[]) {
         while (true) {
@@ -52,11 +35,18 @@ public class Game {
                 System.out.println("ok.");
                 break;
             }
-            print2D(gameBoard);
-            System.out.println("Please enter your move in the format: e4; Qxc6; etc.");
-            //White goes first
-            String whiteMove = getInput("Your move, white!");
 
+            //testing purposes:
+            Player p1 = new Player(true);
+            Player p2 = new Player(false);
+            Board chessBoard = new Board();
+
+            chessBoard.setPieces(p1);
+            chessBoard.setPieces(p2);
+
+            chessBoard.updateGameBoard();
+            System.out.println("Current board:");
+            print2D(chessBoard.getGameBoard());
 
 
         }
