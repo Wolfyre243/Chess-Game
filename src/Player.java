@@ -48,7 +48,7 @@ public class Player {
             this.playerPieces.add(new King(false, 4, 0));
         }
 
-        System.out.println(playerPieces.toString());
+        System.out.println("Created player's pieces: " + playerPieces.toString());
     }
 
 

@@ -23,6 +23,10 @@ public abstract class Pieces {
         this.isAlive = status;
     }
 
+    public boolean getStatus() {
+        return this.isAlive;
+    }
+
     public int getX() {
         return x;
     }
