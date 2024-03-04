@@ -7,7 +7,7 @@ public class Board {
     }
 
     public void setPieces(Player p) {
-        //TODO: write code that initialises a player's pieces, using the player's current list of pieces
+        //TODO: write code that places a Player's pieces at their respective starting positions, using the player's current list of pieces
     }
 
 }
