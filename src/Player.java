@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 public class Player {
     public boolean isWhite;
+    public String name;
     private ArrayList<Pieces> playerPieces = new ArrayList<Pieces>();
 
-    public Player(boolean isWhite) {
+    public Player(boolean isWhite, String inputName) {
         this.isWhite = isWhite;
+        this.name = inputName;
         createPieces();
+
+        System.out.println("Welcome, " + this.name + "!");
     }
 
     public ArrayList<Pieces> getPlayerPieces() {
@@ -48,7 +52,7 @@ public class Player {
             this.playerPieces.add(new King(false, 4, 0));
         }
 
-        System.out.println("Created player's pieces: " + playerPieces.toString());
+        //System.out.println(this.name + "'s pieces: " + playerPieces.toString());
     }
 
 
