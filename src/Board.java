@@ -57,4 +57,17 @@ public class Board {
 
     }
 
+    public void executeMove(Move move) { //assuming the move was checked beforehand in Game class
+        Pieces taken = spots[move.targetC[0]][7 - move.targetC[1]].occupySpot(move.selectedPiece);
+        spots[move.selectedPiece.getX()][move.selectedPiece.getY()].releaseSpot();
+
+        if (taken != null) {
+            System.out.println(move.selectedPiece.icon + " takes " + taken.icon + " at " + Arrays.toString(move.targetC));
+        } else {
+            System.out.println(move.selectedPiece.icon + " moved to " + Arrays.toString(move.targetC));
+        }
+
+
+    }
+
 }

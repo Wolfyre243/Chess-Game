@@ -53,13 +53,14 @@ public class Game {
 
     public void processTurn(Player p) {
         boolean moveAccepted = false;
-        print2D(chessBoard.getGameBoard());
-        System.out.println("Your turn, " + this.p1.name + ". Please enter the coordinates of the piece you'd like to move.");
-
         int[] pieceCoordinates = new int[2];
-        //get the desired coords
+        int[] targetCoordinates = new int[2];
+
+        System.out.println("Your turn, " + p.name + ". Please enter the coordinates of the piece you'd like to move.");
+
+        //get the desired piece to move
         while (moveAccepted == false) {
-            System.out.println("Enter the target coordinates [x, y]");
+            System.out.println("Enter the piece's coordinates [x, y]");
             for (int i = 0; i < pieceCoordinates.length; i++) {
                 pieceCoordinates[i] = in.nextInt() - 1;
             }
@@ -67,16 +68,42 @@ public class Game {
             if (chessBoard.getPieceAt(pieceCoordinates) == null) {
                 System.out.println("Invalid input!");
                 pieceCoordinates = new int[2];
+            } else if (chessBoard.getPieceAt(pieceCoordinates).isWhite != p.isWhite) {
+                System.out.println("You have chosen a " + chessBoard.getPieceAt(pieceCoordinates).icon + " which isn't yours!");
+                pieceCoordinates = new int[2];
             } else {
                 System.out.println("You have chosen a " + chessBoard.getPieceAt(pieceCoordinates).icon);
                 moveAccepted = true;
             }
 
         }
+        moveAccepted = false;
 
+        //get the target coords
+        while (moveAccepted == false) {
+            System.out.println("Enter the target coordinates [x, y]");
+            for (int i = 0; i < targetCoordinates.length; i++) {
+                targetCoordinates[i] = in.nextInt() - 1;
+            }
+            System.out.println("X: " + targetCoordinates[0] + " Y: " + targetCoordinates[1]);
+            if (targetCoordinates[0] < 0 || targetCoordinates[0] > 7 || targetCoordinates[1] < 0 || targetCoordinates[1] > 7) {
+                System.out.println("Invalid input!");
+                targetCoordinates = new int[2];
+            } else { //TODO: insert checking algorithm here; for now asssume its legal*
+                //System.out.format("Moving " + chessBoard.getPieceAt(pieceCoordinates).icon + " at [%d, %d] to [%d, %d] \n", pieceCoordinates[0] + 1, pieceCoordinates[1] + 1, targetCoordinates[0] + 1, targetCoordinates[1] + 1);
+                moveAccepted = true;
+            }
+        } //* check whether pieces are same colour, in range, etc
+        moveAccepted = false;
 
+        Move playerMove = new Move(chessBoard.getPieceAt(pieceCoordinates), targetCoordinates);
+        //add this move to moveLogs in the future as well.
+        p.setCurrentMove(playerMove);
 
+        chessBoard.executeMove(p.getCurrentMove());
 
+        chessBoard.updateGameBoard();
+        print2D(chessBoard.getGameBoard());
 
     }
 
@@ -86,10 +113,11 @@ public class Game {
         enterPlayer(new Player(true, "Tom"));
         enterPlayer(new Player(false, "Harry"));
         chessBoard.updateGameBoard();
+        print2D(chessBoard.getGameBoard());
 
         while (true) {
             processTurn(p1);
-            //processTurn(p2);
+            processTurn(p2);
         }
 
         //add game logic here in the future

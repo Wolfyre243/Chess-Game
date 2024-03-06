@@ -13,7 +13,7 @@ public class Spot {
 
     }
 
-    public void occupySpot(Pieces inboundPiece) {
+    public Pieces occupySpot(Pieces inboundPiece) {
         Pieces original = this.currentPiece;
         //set the piece here as dead (i.e. false) if there is one here
         if (this.currentPiece != null) {
@@ -22,8 +22,14 @@ public class Spot {
         //set the inboundPiece here
         this.currentPiece = inboundPiece;
         //for debugging
-        //System.out.println("A " + original.getClass().getName() + " was replaced by a " + inboundPiece.getClass().getName());
+        //System.out.println("A " + original.icon + " was replaced by a " + inboundPiece.icon);
+        return original;
+    }
 
+    public void releaseSpot() {
+        //Pieces releasedPiece = this.currentPiece;
+        this.currentPiece = null; //sets the piece of this spot as null
+        //return releasedPiece;
     }
 
     public Pieces getPiece() {
