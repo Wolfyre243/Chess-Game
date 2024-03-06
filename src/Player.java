@@ -7,6 +7,8 @@ public class Player {
     public String name;
     private ArrayList<Pieces> playerPieces = new ArrayList<Pieces>();
 
+    private Move currentMove;
+
     public Player(boolean isWhite, String inputName) {
         this.isWhite = isWhite;
         this.name = inputName;
@@ -56,4 +58,11 @@ public class Player {
     }
 
 
+    public Move getCurrentMove() {
+        return currentMove;
+    }
+
+    public void setCurrentMove(Move currentMove) {
+        this.currentMove = currentMove;
+    }
 }

@@ -1,3 +1,5 @@
+import chessPieces.Pieces;
+
 import java.util.Arrays;
 
 public class Board {
@@ -10,7 +12,7 @@ public class Board {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                spots[j][i] = new Spot(i, j);
+                spots[i][j] = new Spot(j, i);
             }
         }
 
@@ -43,6 +45,29 @@ public class Board {
 
     public char[][] getGameBoard() {
         return gameBoard;
+    }
+
+    public Pieces getPieceAt(int[] arr) {
+        //arr[0] is x coord and arr[1] is y coord.
+        if (arr[0] < 0 || arr[0] > 7 || arr[1] < 0 || arr[1] > 7) {
+            return null;
+        } else {
+            return spots[arr[0]][7 - arr[1]].getPiece();
+        }
+
+    }
+
+    public void executeMove(Move move) { //assuming the move was checked beforehand in Game class
+        Pieces taken = spots[move.targetC[0]][7 - move.targetC[1]].occupySpot(move.selectedPiece);
+        spots[move.selectedPiece.getX()][move.selectedPiece.getY()].releaseSpot();
+
+        if (taken != null) {
+            System.out.println(move.selectedPiece.icon + " takes " + taken.icon + " at " + Arrays.toString(move.targetC));
+        } else {
+            System.out.println(move.selectedPiece.icon + " moved to " + Arrays.toString(move.targetC));
+        }
+
+
     }
 
 }
