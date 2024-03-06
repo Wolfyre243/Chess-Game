@@ -7,7 +7,6 @@ public class Game {
     static PrintWriter printWriter = new PrintWriter(System.out, true);
 
     final Board chessBoard;
-
     Player p1;
     Player p2;
 
