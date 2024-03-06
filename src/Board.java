@@ -1,3 +1,5 @@
+import chessPieces.Pieces;
+
 import java.util.Arrays;
 
 public class Board {
@@ -43,6 +45,11 @@ public class Board {
 
     public char[][] getGameBoard() {
         return gameBoard;
+    }
+
+    public Pieces getPieceAt(int[] arr) {
+        //arr[0] is x coord and arr[1] is y coord.
+        return spots[arr[0]][arr[1]].getPiece();
     }
 
 }
