@@ -16,7 +16,7 @@ public class Game {
     Player p2;
 
     ArrayList<String> moveInputArr = new ArrayList<String>(5);
-    boolean moveAccepted = false;
+
     Pieces chosenPiece;
 
 
@@ -52,25 +52,21 @@ public class Game {
     }
 
     public void processTurn(Player p) {
+        boolean moveAccepted = false;
+        print2D(chessBoard.getGameBoard());
         System.out.println("Your turn, " + this.p1.name + ". Please enter the coordinates of the piece you'd like to move.");
-        //get the selected piece
-//        String pieceID = getInput("Select a piece to move: P/N/B/R/Q/K");
-//        while (pieceID.matches("(?i)[PNBRQK]")) {
-//            //repeatedly ask for another response for the pieceID
-//            System.out.println("Invalid input.");
-//            pieceID = getInput("Select a piece to move: P/N/B/R/Q/K");
-//        }
+
         int[] pieceCoordinates = new int[2];
         //get the desired coords
-        while (!moveAccepted) {
+        while (moveAccepted == false) {
             System.out.println("Enter the target coordinates [x, y]");
             for (int i = 0; i < pieceCoordinates.length; i++) {
-                pieceCoordinates[0] = in.nextInt();
-                pieceCoordinates[1] = in.nextInt();
+                pieceCoordinates[i] = in.nextInt() - 1;
             }
             System.out.println("X: " + pieceCoordinates[0] + " Y: " + pieceCoordinates[1]);
             if (chessBoard.getPieceAt(pieceCoordinates) == null) {
                 System.out.println("Invalid input!");
+                pieceCoordinates = new int[2];
             } else {
                 System.out.println("You have chosen a " + chessBoard.getPieceAt(pieceCoordinates).icon);
                 moveAccepted = true;
@@ -91,8 +87,14 @@ public class Game {
         enterPlayer(new Player(false, "Harry"));
         chessBoard.updateGameBoard();
 
+        while (true) {
+            processTurn(p1);
+            //processTurn(p2);
+        }
+
         //add game logic here in the future
-        print2D(chessBoard.getGameBoard());
+
+
     }
 
 

@@ -12,7 +12,7 @@ public class Board {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                spots[j][i] = new Spot(i, j);
+                spots[i][j] = new Spot(j, i);
             }
         }
 
@@ -49,7 +49,12 @@ public class Board {
 
     public Pieces getPieceAt(int[] arr) {
         //arr[0] is x coord and arr[1] is y coord.
-        return spots[arr[0]][arr[1]].getPiece();
+        if (arr[0] < 0 || arr[0] > 7 || arr[1] < 0 || arr[1] > 7) {
+            return null;
+        } else {
+            return spots[arr[0]][7 - arr[1]].getPiece();
+        }
+
     }
 
 }
